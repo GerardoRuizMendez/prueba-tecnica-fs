@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import user from "../models/user";
 import getUsers from "../services/getUsers";
 import UserCard from "../components/UserCard";
+import AddUserButton from "../components/AddUserButton";
 
 export default function ListUsers() {
   const navigate = useNavigate();
@@ -15,9 +16,13 @@ export default function ListUsers() {
   const [page, setPage] = useState(0);
 
   useEffect(() => {
-    getUsers(accessToken).then((res) => {
-      setUsers(res);
-    });
+    getUsers(accessToken)
+      .then((res) => {
+        setUsers(res);
+      })
+      .catch(() => {
+        navigate("/login");
+      });
   }, []);
 
   useEffect(() => {
@@ -34,16 +39,7 @@ export default function ListUsers() {
   return (
     <div className="h-full flex flex-col justify-center items-center text-white pb-5">
       <h2 className="text-5xl mt-8">Usuarios</h2>
-      <div className="w-5/6 flex justify-start mx-4">
-        <button
-          className="text-white py-2 px-4 bg-blue-500 hover:bg-blue-600 rounded mt-8"
-          onClick={() => {
-            navigate("/agregar-usuario");
-          }}
-        >
-          Agregar usuario
-        </button>
-      </div>
+      <AddUserButton />
 
       <div className="w-5/6 flex justify-between mt-8 ">
         <button

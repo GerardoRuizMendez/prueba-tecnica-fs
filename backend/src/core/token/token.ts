@@ -14,7 +14,7 @@ export class authToken {
   decodedAccessToken(token: string): string {
     const decodedToken = Jwt.decode(token) as JwtPayload;
 
-    return decodedToken._id;
+    return decodedToken.id;
   }
 
   verifyAccessToken(token: string): boolean {

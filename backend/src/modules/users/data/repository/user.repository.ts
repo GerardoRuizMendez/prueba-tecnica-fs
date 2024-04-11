@@ -13,12 +13,12 @@ export default class UserRepository {
     return this.databaseDataSource.getAllUsers();
   }
 
-  async getroles(): Promise<rol[]> {
-    return this.databaseDataSource.getroles();
+  async getRoles(): Promise<rol[]> {
+    return this.databaseDataSource.getRoles();
   }
 
-  async getUserById(userId: number): Promise<user | null> {
-    return this.databaseDataSource.getUserById(userId);
+  async getCurrentUser(userId: number): Promise<user | null> {
+    return this.databaseDataSource.getCurrentUser(userId);
   }
 
   async createUser(newUser: user): Promise<user | null> {

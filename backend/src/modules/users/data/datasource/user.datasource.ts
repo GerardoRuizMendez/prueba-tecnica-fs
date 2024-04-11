@@ -27,7 +27,7 @@ export default class DatabaseDataSource {
     }
   }
 
-  async getroles(): Promise<rol[]> {
+  async getRoles(): Promise<rol[]> {
     const client = await this.pool.connect();
     try {
       const result = await client.query("SELECT * FROM rol");
@@ -40,12 +40,13 @@ export default class DatabaseDataSource {
     }
   }
 
-  async getUserById(userId: number): Promise<user | null> {
+  async getCurrentUser(userId: number): Promise<user | null> {
     const client = await this.pool.connect();
     try {
-      const result = await client.query("SELECT * FROM usuario WHERE id = $1", [
-        userId,
-      ]);
+      const result = await client.query(
+        "SELECT u.id, u.Nombre ,u.Apellido_Paterno,u.Apellido_Materno,u.Correo,u.Numero_Telefonico,u.Fecha_Nacimiento,r.Nombre AS Rol FROM Usuario u JOIN Rol r ON u.Rol_id = r.id WHERE u.id = $1",
+        [userId]
+      );
       return result.rows[0] || null;
     } finally {
       client.release();

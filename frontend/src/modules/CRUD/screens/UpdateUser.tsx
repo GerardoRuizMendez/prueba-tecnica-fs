@@ -13,6 +13,7 @@ import getRoles from "../services/getRoles";
 import { AuthContext } from "../../../core/context/AuthContext";
 import rol from "../models/rol";
 import updateUser from "../services/updateUser";
+import { useNavigate } from "react-router-dom";
 
 export default function UpdateUser({
   isOpen,
@@ -25,6 +26,7 @@ export default function UpdateUser({
 }) {
   const { accessToken } = useContext(AuthContext);
   const [roles, setRoles] = useState<rol[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isOpen) getRoles(accessToken).then((res) => setRoles(res));
@@ -54,8 +56,8 @@ export default function UpdateUser({
       rol: (elements.namedItem("rol") as HTMLInputElement).value,
     };
     updateUser(usuario.id || 0, newUser, accessToken)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        navigate("/login");
       })
       .catch(() => {
         console.log("error");

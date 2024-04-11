@@ -8,7 +8,7 @@ export default function deleteUser(id: number, accessToken: string) {
     },
   })
     .then((res) => {
-      if (res.status == 400 || res.status == 500) throw new Error("Error");
+      if (res.status != 200) throw new Error("Error");
       return res.json();
     })
     .then((res) => {

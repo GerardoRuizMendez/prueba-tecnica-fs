@@ -18,9 +18,9 @@ export default class UserController {
     }
   }
 
-  async getroles(req: Request, res: Response) {
+  async getRoles(req: Request, res: Response) {
     try {
-      const users = await this.UserRepository.getroles();
+      const users = await this.UserRepository.getRoles();
       res.status(200).json(users);
     } catch (error) {
       console.error("Error al obtener roles:", error);
@@ -28,10 +28,10 @@ export default class UserController {
     }
   }
 
-  async getUserById(req: Request, res: Response) {
+  async getCurrentUser(req: Request, res: Response) {
     try {
-      const userId = parseInt(req.params.id);
-      const user = await this.UserRepository.getUserById(userId);
+      const userId = parseInt(req.userId);
+      const user = await this.UserRepository.getCurrentUser(userId);
       if (user) {
         res.json(user);
         return;

@@ -23,17 +23,17 @@ userRouter.get(
     authMiddlewareController.checkToken(req, res, next);
   },
   (req, res) => {
-    userController.getroles(req, res);
+    userController.getRoles(req, res);
   }
 );
 
 userRouter.get(
-  "/api/v1/get-user/:id",
+  "/api/v1/get-current-user",
   async (req, res, next) => {
     authMiddlewareController.checkToken(req, res, next);
   },
   (req, res) => {
-    userController.getUserById(req, res);
+    userController.getCurrentUser(req, res);
   }
 );
 

@@ -3,6 +3,7 @@ export default function getUsers(accessToken: string) {
     headers: { authorization: `Bearer ${accessToken}` },
   })
     .then((res) => {
+      if (res.status != 200) throw new Error("Error");
       return res.json();
     })
     .then((res) => {

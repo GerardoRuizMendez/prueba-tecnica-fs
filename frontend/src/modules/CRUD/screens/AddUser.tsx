@@ -48,8 +48,8 @@ export default function AddUser() {
       rol: (elements.namedItem("rol") as HTMLInputElement).value,
     };
     addUser(newUser, accessToken)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        navigate("/login");
       })
       .catch(() => {
         setError(true);

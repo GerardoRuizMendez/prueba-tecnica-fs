@@ -11,7 +11,7 @@ export default function addUser(newUser: user, accessToken: string) {
     body: JSON.stringify(newUser),
   })
     .then((res) => {
-      if (res.status == 400 || res.status == 500) throw new Error("Error");
+      if (res.status != 201) throw new Error("Error");
       return res.json();
     })
     .then((res) => {

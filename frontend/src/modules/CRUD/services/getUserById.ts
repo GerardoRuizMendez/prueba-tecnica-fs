@@ -1,5 +1,5 @@
-export default function getRoles(accessToken: string) {
-  return fetch("http://localhost:3000/api/v1/get-roles", {
+export default function getCurrentUser(accessToken: string) {
+  return fetch(`http://localhost:3000/api/v1/get-current-user`, {
     headers: { authorization: `Bearer ${accessToken}` },
   })
     .then((res) => {

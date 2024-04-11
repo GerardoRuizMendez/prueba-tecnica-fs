@@ -34,7 +34,7 @@ export class AuthMiddlewareController {
       return;
     }
 
-    req.userId = tokenParts[1];
+    req.userId = this.token.decodedAccessToken(tokenParts[1]);
     next();
   }
 }
