@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../core/context/AuthContext";
-import getCurrentUser from "../services/getUserById";
+import getCurrentUser from "../services/getCurrentUser";
 
 export default function AddUserButton() {
   const navigate = useNavigate();

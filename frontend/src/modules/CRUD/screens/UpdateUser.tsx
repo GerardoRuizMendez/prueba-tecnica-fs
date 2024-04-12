@@ -30,7 +30,7 @@ export default function UpdateUser({
 
   useEffect(() => {
     if (isOpen) getRoles(accessToken).then((res) => setRoles(res));
-  }, [isOpen, accessToken]);
+  }, [isOpen]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

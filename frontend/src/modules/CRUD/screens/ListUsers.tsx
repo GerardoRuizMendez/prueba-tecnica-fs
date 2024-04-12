@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../core/context/AuthContext";
 import { useNavigate } from "react-router-dom";

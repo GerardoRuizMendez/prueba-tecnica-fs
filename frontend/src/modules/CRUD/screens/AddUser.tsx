@@ -7,6 +7,7 @@ import rol from "../models/rol";
 import getRoles from "../services/getRoles";
 import user from "../models/user";
 import addUser from "../services/addUser";
+import getCurrentUser from "../services/getCurrentUser";
 
 export default function AddUser() {
   const { accessToken } = useContext(AuthContext);
@@ -14,15 +15,19 @@ export default function AddUser() {
 
   const [roles, setRoles] = useState<rol[]>([]);
   const [error, setError] = useState(false);
+
   useEffect(() => {
     getRoles(accessToken).then((res) => setRoles(res));
-  });
+  }, []);
 
   useEffect(() => {
     if (accessToken == "") {
-      navigate("/login");
+      navigate("/");
     }
-  });
+    getCurrentUser(accessToken).then((res) => {
+      if (res.rol == "Administrador") navigate("/");
+    });
+  }, []);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -59,7 +64,7 @@ export default function AddUser() {
   return (
     <div className="h-full flex flex-col justify-center items-center text-white py-5">
       <h2 className="text-5xl mt-5">Agregar usuario</h2>
-      <div className="w-7/12 mb-5 flex justify-start">
+      <div className="w-11/12 md:w-7/12 mb-5 flex justify-start">
         <button
           className="text-white py-2 px-4 bg-blue-500 hover:bg-blue-600 rounded mt-8"
           onClick={() => {

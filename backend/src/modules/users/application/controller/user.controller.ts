@@ -33,7 +33,7 @@ export default class UserController {
       const userId = parseInt(req.userId);
       const user = await this.UserRepository.getCurrentUser(userId);
       if (user) {
-        res.json(user);
+        res.status(200).json(user);
         return;
       }
       res.status(404).json({ message: "Usuario no encontrado" });
