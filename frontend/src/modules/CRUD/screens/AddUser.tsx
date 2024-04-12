@@ -25,7 +25,7 @@ export default function AddUser() {
       navigate("/");
     }
     getCurrentUser(accessToken).then((res) => {
-      if (res.rol == "Administrador") navigate("/");
+      if (res.rol != "Administrador") navigate("/");
     });
   }, []);
 
