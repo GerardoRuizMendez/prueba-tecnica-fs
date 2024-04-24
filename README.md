@@ -1,56 +1,45 @@
 # Crud de usuarios + inicio de sesión
 
-## Ejecución
-Para ejecutar el proyecto deberas abrir una terminal en cada una de las subcarpetas (frontend y backend)
+## Instalación
 
-### Backend
-Para el backend, debemos instalar las dependencias que usaremos en el proyecto
+Para ejecutar el proyecto deberas ejecutar el archivo setup (setup.sh en linux o setup.cmd en windows)
+
+Linux:
+
 ```
-npm install
+./setup.sh
 ```
-Debemos generar un archivo .env con las siguientes variables:
+
+Windows:
+
 ```
-DATABASE_URL=
-DB_NAME=
-SECRET=
+./setup.cmd
 ```
+
+(O solo dar doble click en el archivo setup correspondiente)
+
+## Variables de entorno
+
+Debemos generar un archivo .env con las siguientes variables en el frontend (ruta: /frontend/.env) y en en el backend (ruta: /backend/.env).
 
 Dentro de env.example se explica mejor lo que debe tener cada variable
 
-Despues, ejecutamos usamos el archivo seed para generar los diferentes usuarios
-```
-node ./seed.mjs
-```
-Este archivo nos generará 20 usuarios para ver en la plataforma.
-El usuario administrador por defecto tendrá las siguientes credenciales:
-Correo: *pedro@ejemplo.com*
-Contraseña: *contra123*
+Para iniciar los servidores, debemos ejecutar los comandos
 
-Haremos un build para generar los archivos
 ```
-npm run build
-```
-y despues inicamos el servidor
-```
-npm run serve
+npm run dev --prefix backend
 ```
 
+y
 
-### Frontend
-Al igual que con el backend, en esta carpeta deberas instalar las dependencias con el comando
 ```
-npm install
-```
-Para despues crear el archivo .env con sus respectivas variables basandonos en el archivo .env.example
-```
-VITE_URL_BASE=
+npm run dev --prefix backend
 ```
 
-Y en este caso unicamente tenemos que iniciar el servidor con
-```
-npm run dev
-```
+en diferentes ventanas.
+
 Esto creará un servidor local donde utilizar el sistema. Unicamente se debe acceder al navegador desde el enlace
+
 ```
 http://localhost:5173
 ```
