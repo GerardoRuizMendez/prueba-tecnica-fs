@@ -3,10 +3,12 @@ import login from "./services/login";
 import { AuthContext } from "../../core/context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import InputText from "../../core/components/InputText";
+import InputPassword from "../../core/components/InputPassword";
 
 export default function Login() {
   const [email, setEmail] = useState("pedro@ejemplo.com");
   const [password, setPassword] = useState("contra123");
+
   const [invalid, setInvalid] = useState(false);
   const { setAccessToken } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -42,8 +44,13 @@ export default function Login() {
             label="Email"
             defaultValue={email}
             onChange={(e) => setEmail(e.target.value)}
+            feedback="Ingresa un email válido"
+            regex={
+              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            }
           />
-          <InputText
+
+          <InputPassword
             name="password"
             label="Contraseña"
             defaultValue={password}

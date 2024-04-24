@@ -8,6 +8,7 @@ import getRoles from "../services/getRoles";
 import user from "../models/user";
 import addUser from "../services/addUser";
 import getCurrentUser from "../services/getCurrentUser";
+import InputPassword from "../../../core/components/InputPassword";
 
 export default function AddUser() {
   const { accessToken } = useContext(AuthContext);
@@ -76,22 +77,46 @@ export default function AddUser() {
       </div>
       <div className="w-11/12 md:w-7/12 bg-white text-black p-8 pt-14 mb-5 rounded">
         <form className="w-full" onSubmit={handleSubmit}>
-          <InputText name="nombre" label="Nombre" />
-          <InputText name="apellido_paterno" label="Apellido paterno" />
-          <InputText label="Apellido materno" name="apellido_materno" />
+          <InputText
+            name="nombre"
+            label="Nombre"
+            feedback="Ingresa un nombre válido"
+            regex={/^.{4,}$/}
+          />
+          <InputText
+            name="apellido_paterno"
+            label="Apellido paterno"
+            feedback="Ingresa un apellido válido"
+            regex={/^.{4,}$/}
+          />
+          <InputText
+            label="Apellido materno"
+            name="apellido_materno"
+            feedback="Ingresa un apellido válido"
+            regex={/^.{4,}$/}
+          />
           <InputSelect
             label="Rol"
             options={roles.map((rol) => rol.nombre)}
             values={roles.map((rol) => rol.id || 0)}
             name="rol"
           />
-          <InputText label="Correo" name="correo" />
+          <InputText
+            label="Correo"
+            name="correo"
+            feedback="Ingresa un correo válido"
+            regex={
+              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            }
+          />
           <InputText
             type="number"
             label="Número telefónico"
             name="numero_telefonico"
+            feedback="Ingresa un numero telefónico válido"
+            regex={/^[0-9]{10}$/}
           />
-          <InputText type="password" label="Contraseña" name="contrasena" />
+          <InputPassword label="Contraseña" name="contrasena" />
           <InputText
             type="date"
             label="Fecha de nacimiento"

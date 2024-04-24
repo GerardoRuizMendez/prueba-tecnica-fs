@@ -79,16 +79,22 @@ export default function UpdateUser({
               name="nombre"
               label="Nombre"
               defaultValue={usuario.nombre}
+              feedback="Ingresa un nombre válido"
+              regex={/^.{4,}$/}
             />
             <InputText
               name="apellido_paterno"
               label="Apellido paterno"
               defaultValue={usuario.apellido_paterno}
+              feedback="Ingresa un apellido válido"
+              regex={/^.{4,}$/}
             />
             <InputText
               label="Apellido materno"
               name="apellido_materno"
               defaultValue={usuario.apellido_materno}
+              feedback="Ingresa un apellido válido"
+              regex={/^.{4,}$/}
             />
             <InputSelect
               label="Rol"
@@ -100,18 +106,18 @@ export default function UpdateUser({
               label="Correo"
               name="correo"
               defaultValue={usuario.correo}
+              feedback="Ingresa un correo válido"
+              regex={
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+              }
             />
             <InputText
               type="number"
               label="Número telefónico"
               name="numero_telefonico"
               defaultValue={usuario.numero_telefonico}
-            />
-            <InputText
-              type="password"
-              label="Contraseña"
-              name="contrasena"
-              defaultValue={usuario.contrasena}
+              feedback="Ingresa un numero telefónico válido"
+              regex={/^[0-9]{10}$/}
             />
             <InputText
               type="date"
