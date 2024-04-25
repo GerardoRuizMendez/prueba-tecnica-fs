@@ -4,10 +4,12 @@ import { AuthContext } from "../../core/context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import InputText from "../../core/components/InputText";
 import InputPassword from "../../core/components/InputPassword";
+import Loader from "../../core/components/Loader";
 
 export default function Login() {
   const [email, setEmail] = useState("pedro@ejemplo.com");
   const [password, setPassword] = useState("contra123");
+  const [loader, setLoader] = useState(false);
 
   const [invalid, setInvalid] = useState(false);
   const { setAccessToken } = useContext(AuthContext);
@@ -15,6 +17,7 @@ export default function Login() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoader(true);
 
     login(email, password)
       .then((res) => {
@@ -25,6 +28,7 @@ export default function Login() {
       })
       .catch(() => {
         setInvalid(true);
+        setLoader(false);
       });
   };
 
@@ -58,7 +62,7 @@ export default function Login() {
           />
 
           <button className="my-8 py-2 px-4 bg-blue-500 hover:bg-blue-600 rounded">
-            Iniciar sesión
+            {loader ? <Loader /> : "Iniciar sesión"}
           </button>
         </form>
       </div>
