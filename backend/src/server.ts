@@ -6,7 +6,12 @@ import cors from "cors";
 const server = express();
 server.set("port", 3000);
 server.use(express.json());
-server.use(cors());
+server.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  })
+);
 
 server.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
