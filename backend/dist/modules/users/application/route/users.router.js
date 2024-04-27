@@ -26,12 +26,12 @@ userRouter.get("/api/v1/all-users", (req, res, next) => __awaiter(void 0, void 0
 userRouter.get("/api/v1/get-roles", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     authMiddlewareController.checkToken(req, res, next);
 }), (req, res) => {
-    userController.getroles(req, res);
+    userController.getRoles(req, res);
 });
-userRouter.get("/api/v1/get-user/:id", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+userRouter.get("/api/v1/get-current-user", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     authMiddlewareController.checkToken(req, res, next);
 }), (req, res) => {
-    userController.getUserById(req, res);
+    userController.getCurrentUser(req, res);
 });
 userRouter.post("/api/v1/create-user", (req, res) => {
     userController.createUser(req, res);

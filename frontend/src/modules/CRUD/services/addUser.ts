@@ -1,7 +1,7 @@
 import user from "../models/user";
 
 export default function addUser(newUser: user, accessToken: string) {
-  return fetch("http://localhost:3000/api/v1/create-user", {
+  return fetch(`${import.meta.env.VITE_URL_BASE}/api/v1/create-user`, {
     method: "POST",
 
     headers: {

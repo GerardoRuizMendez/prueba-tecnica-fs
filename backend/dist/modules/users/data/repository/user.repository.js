@@ -22,14 +22,14 @@ class UserRepository {
             return this.databaseDataSource.getAllUsers();
         });
     }
-    getroles() {
+    getRoles() {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.databaseDataSource.getroles();
+            return this.databaseDataSource.getRoles();
         });
     }
-    getUserById(userId) {
+    getCurrentUser(userId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.databaseDataSource.getUserById(userId);
+            return this.databaseDataSource.getCurrentUser(userId);
         });
     }
     createUser(newUser) {

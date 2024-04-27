@@ -1,5 +1,5 @@
 export default function getUsers(accessToken: string) {
-  return fetch("http://localhost:3000/api/v1/all-users", {
+  return fetch(`${import.meta.env.VITE_URL_BASE}/api/v1/all-users`, {
     headers: { authorization: `Bearer ${accessToken}` },
   })
     .then((res) => {

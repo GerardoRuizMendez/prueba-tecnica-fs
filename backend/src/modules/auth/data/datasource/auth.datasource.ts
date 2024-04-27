@@ -8,7 +8,7 @@ export default class AuthDatasource {
 
   constructor() {
     this.pool = new Pool({
-      connectionString: `${process.env.DATABASE_URL}/${process.env.DB_NAME}`,
+      connectionString: process.env.DATABASE_URL,
     });
   }
 

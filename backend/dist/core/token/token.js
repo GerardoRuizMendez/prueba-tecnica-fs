@@ -12,7 +12,7 @@ class authToken {
     }
     decodedAccessToken(token) {
         const decodedToken = jsonwebtoken_1.default.decode(token);
-        return decodedToken._id;
+        return decodedToken.id;
     }
     verifyAccessToken(token) {
         try {

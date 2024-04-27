@@ -13,7 +13,7 @@ const pg_1 = require("pg");
 class AuthDatasource {
     constructor() {
         this.pool = new pg_1.Pool({
-            connectionString: `${process.env.DATABASE_URL}/${process.env.DB_NAME}`,
+            connectionString: process.env.DATABASE_URL,
         });
     }
     signIn(credentials) {

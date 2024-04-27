@@ -1,5 +1,5 @@
 export default function deleteUser(id: number, accessToken: string) {
-  return fetch(`http://localhost:3000/api/v1/delete/${id}`, {
+  return fetch(`${import.meta.env.VITE_URL_BASE}/api/v1/delete/${id}`, {
     method: "DELETE",
 
     headers: {

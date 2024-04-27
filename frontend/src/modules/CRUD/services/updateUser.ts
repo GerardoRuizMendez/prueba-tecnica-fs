@@ -5,7 +5,7 @@ export default function updateUser(
   newUser: user,
   accessToken: string
 ) {
-  return fetch(`http://localhost:3000/api/v1/update/${id}`, {
+  return fetch(`${import.meta.env.VITE_URL_BASE}/api/v1/update/${id}`, {
     method: "PUT",
 
     headers: {

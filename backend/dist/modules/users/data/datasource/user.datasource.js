@@ -17,7 +17,7 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 class DatabaseDataSource {
     constructor() {
         this.pool = new pg_1.Pool({
-            connectionString: `${process.env.DATABASE_URL}/${process.env.DB_NAME}`,
+            connectionString: process.env.DATABASE_URL,
         });
     }
     getAllUsers() {
@@ -36,7 +36,7 @@ class DatabaseDataSource {
             }
         });
     }
-    getroles() {
+    getRoles() {
         return __awaiter(this, void 0, void 0, function* () {
             const client = yield this.pool.connect();
             try {
@@ -52,13 +52,11 @@ class DatabaseDataSource {
             }
         });
     }
-    getUserById(userId) {
+    getCurrentUser(userId) {
         return __awaiter(this, void 0, void 0, function* () {
             const client = yield this.pool.connect();
             try {
-                const result = yield client.query("SELECT * FROM usuario WHERE id = $1", [
-                    userId,
-                ]);
+                const result = yield client.query("SELECT u.id, u.Nombre ,u.Apellido_Paterno,u.Apellido_Materno,u.Correo,u.Numero_Telefonico,u.Fecha_Nacimiento,r.Nombre AS Rol FROM Usuario u JOIN Rol r ON u.Rol_id = r.id WHERE u.id = $1", [userId]);
                 return result.rows[0] || null;
             }
             finally {

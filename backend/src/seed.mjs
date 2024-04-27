@@ -7,15 +7,9 @@ const { Pool } = pkg;
 dotenv.config();
 
 async function seed() {
-  const pool = new Pool({
-    connectionString: `${process.env.DATABASE_URL}`,
-  });
-
-  await pool.query(`CREATE DATABASE ${process.env.DB_NAME}`);
-  await pool.end();
-
   const poolDB = new Pool({
-    connectionString: `${process.env.DATABASE_URL}/${process.env.DB_NAME}`,
+    connectionString:
+      "postgresql://postgres:cOKqrjkualbSXzHUhaqknTUGaYDIjQqK@monorail.proxy.rlwy.net:57635/railway",
   });
 
   await poolDB.query(`
@@ -92,6 +86,7 @@ async function seed() {
     ]
   );
 
+  //console.log(await poolDB.query(`SELECT * FROM usuario`));
   console.log("Usuario administrador: pedro@ejemplo.com Contraseña: contra123");
 
   await poolDB.end();

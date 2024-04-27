@@ -29,10 +29,10 @@ class UserController {
             }
         });
     }
-    getroles(req, res) {
+    getRoles(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const users = yield this.UserRepository.getroles();
+                const users = yield this.UserRepository.getRoles();
                 res.status(200).json(users);
             }
             catch (error) {
@@ -41,13 +41,13 @@ class UserController {
             }
         });
     }
-    getUserById(req, res) {
+    getCurrentUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const userId = parseInt(req.params.id);
-                const user = yield this.UserRepository.getUserById(userId);
+                const userId = parseInt(req.userId);
+                const user = yield this.UserRepository.getCurrentUser(userId);
                 if (user) {
-                    res.json(user);
+                    res.status(200).json(user);
                     return;
                 }
                 res.status(404).json({ message: "Usuario no encontrado" });

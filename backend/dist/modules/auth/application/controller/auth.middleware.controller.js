@@ -32,7 +32,7 @@ class AuthMiddlewareController {
                 res.status(403).json({ error: "Invalid access token" });
                 return;
             }
-            req.userId = tokenParts[1];
+            req.userId = this.token.decodedAccessToken(tokenParts[1]);
             next();
         });
     }
