@@ -5,7 +5,11 @@ import cors from "cors";
 
 const server = express();
 server.set("port", 3000);
-server.use(cors());
+server.use(
+  cors({
+    origin: "*",
+  })
+);
 server.use(express.json());
 
 //Router
