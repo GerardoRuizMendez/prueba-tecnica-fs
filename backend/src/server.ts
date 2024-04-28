@@ -5,12 +5,31 @@ import cors from "cors";
 
 const server = express();
 server.set("port", 3000);
-server.use(
-  cors({
-    origin: "*",
-  })
-);
+// server.use(
+//   cors({
+//     origin: "*",
+//   })
+// );
 server.use(express.json());
+
+server.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, PUT, POST, DELETE, OPTIONS"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, Content-Length, X-Requested-With"
+  );
+
+  // Allow browsers to send preflight (OPTIONS) requests without interruptions
+  if (req.method === "OPTIONS") {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
 
 //Router
 server.use(userRouter);
