@@ -17,7 +17,7 @@ server.set("port", 3000);
 server.use(express.json());
 
 server.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
   res.header(
     "Access-Control-Allow-Headers",
