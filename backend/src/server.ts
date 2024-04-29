@@ -12,7 +12,19 @@ server.use(
     optionsSuccessStatus: 200,
   })
 );
-server.options("*", cors());
+
+server.options(
+  "*",
+  cors({
+    credentials: true,
+    origin: true,
+    optionsSuccessStatus: 200,
+  })
+);
+server.use(function (req, res, next) {
+  console.log("After CORS " + req.method + " " + req.url);
+  next();
+});
 server.use(express.json());
 // {
 //   allowedHeaders: ["authorization", "Content-Type"], // you can change the headers
