@@ -5,7 +5,14 @@ import cors from "cors";
 
 const server = express();
 server.set("port", 3000);
-server.use(cors());
+server.use(
+  cors({
+    credentials: true,
+    origin: "*",
+    optionsSuccessStatus: 200,
+  })
+);
+server.options("*", cors());
 server.use(express.json());
 // {
 //   allowedHeaders: ["authorization", "Content-Type"], // you can change the headers
