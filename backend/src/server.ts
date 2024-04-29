@@ -8,7 +8,7 @@ server.set("port", 3000);
 server.use(
   cors({
     credentials: true,
-    origin: "*",
+    origin: true,
     optionsSuccessStatus: 200,
   })
 );
