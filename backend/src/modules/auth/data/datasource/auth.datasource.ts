@@ -1,4 +1,3 @@
-import rol from "../../../users/domain/model/rol";
 import user from "../../../users/domain/model/user";
 import { userCredentials } from "../../model/userCredentials";
 import { Pool } from "pg";

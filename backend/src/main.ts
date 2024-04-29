@@ -4,8 +4,10 @@ dotenv.config();
 import server from "./server";
 
 function main() {
-  console.log("Server on port", server.get("port"));
-  console.log("is this working?");
+  const port = server.get("port");
+
+  server.listen(port, "0.0.0.0", function () {});
+  console.log("Server on port", port);
 }
 
 main();

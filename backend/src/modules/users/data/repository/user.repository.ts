@@ -5,8 +5,8 @@ import DatabaseDataSource from "../datasource/user.datasource";
 export default class UserRepository {
   private databaseDataSource: DatabaseDataSource;
 
-  constructor() {
-    this.databaseDataSource = new DatabaseDataSource();
+  constructor(datasource: DatabaseDataSource) {
+    this.databaseDataSource = datasource;
   }
 
   async getAllUsers(): Promise<user[]> {

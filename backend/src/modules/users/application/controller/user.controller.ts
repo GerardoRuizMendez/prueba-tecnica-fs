@@ -4,8 +4,8 @@ import UserRepository from "../../data/repository/user.repository";
 export default class UserController {
   private UserRepository: UserRepository;
 
-  constructor() {
-    this.UserRepository = new UserRepository();
+  constructor(reposiroty: UserRepository) {
+    this.UserRepository = reposiroty;
   }
 
   async getAllUsers(req: Request, res: Response) {

@@ -5,8 +5,8 @@ import AuthDatasource from "../datasource/auth.datasource";
 export class AuthRepository {
   private dataSource: AuthDatasource;
 
-  constructor() {
-    this.dataSource = new AuthDatasource();
+  constructor(private datasource: AuthDatasource) {
+    this.dataSource = datasource;
   }
 
   sigIn(credentials: userCredentials): Promise<user | null> {

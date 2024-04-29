@@ -4,7 +4,7 @@ import authRouter from "./modules/auth/application/route/auth.router";
 import cors from "cors";
 
 const server = express();
-server.listen(parseInt(process.env.PORT || "3000"), "0.0.0.0", function () {});
+server.set("port", parseInt(process.env.PORT || "3000"));
 
 server.use(
   cors({

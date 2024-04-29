@@ -11,8 +11,8 @@ declare global {
 
 export class AuthMiddlewareController {
   private token: authToken;
-  constructor() {
-    this.token = new authToken();
+  constructor(token: authToken) {
+    this.token = token;
   }
 
   async checkToken(req: Request, res: Response, next: NextFunction) {

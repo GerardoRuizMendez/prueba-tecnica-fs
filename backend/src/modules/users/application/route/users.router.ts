@@ -1,11 +1,17 @@
 import { Router } from "express";
 import UserController from "../controller/user.controller";
 import { AuthMiddlewareController } from "../../../auth/application/controller/auth.middleware.controller";
+import UserRepository from "../../data/repository/user.repository";
+import UserDatasource from "../../data/datasource/user.datasource";
+import { authToken } from "../../../../core/token/token";
 
 const userRouter: Router = Router();
-const userController = new UserController();
+const datasource = new UserDatasource();
+const repository = new UserRepository(datasource);
+const token = new authToken();
 
-const authMiddlewareController = new AuthMiddlewareController();
+const userController = new UserController(repository);
+const authMiddlewareController = new AuthMiddlewareController(token);
 
 userRouter.get(
   "/api/v1/all-users",

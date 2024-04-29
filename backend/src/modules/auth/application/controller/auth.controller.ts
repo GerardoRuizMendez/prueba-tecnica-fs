@@ -8,9 +8,9 @@ export default class AuthController {
   private authRepository: AuthRepository;
   private token: authToken;
 
-  constructor() {
-    this.authRepository = new AuthRepository();
-    this.token = new authToken();
+  constructor(repository: AuthRepository, token: authToken) {
+    this.authRepository = repository;
+    this.token = token;
   }
 
   async logIn(req: Request, res: Response): Promise<void> {

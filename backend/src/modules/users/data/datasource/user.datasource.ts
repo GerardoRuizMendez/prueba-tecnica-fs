@@ -3,7 +3,7 @@ import user from "../../domain/model/user";
 import bcrypt from "bcrypt";
 import rol from "../../domain/model/rol";
 
-export default class DatabaseDataSource {
+export default class UserDatasource {
   private pool: Pool;
 
   constructor() {
